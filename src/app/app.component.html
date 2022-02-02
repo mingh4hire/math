@@ -62,29 +62,8 @@
                         <input type="text" min="0" [(ngModel)]="guess" style="width:50px"/>
                     </div>
                 </div>
-                <div class="row ">
-                    
-                    <div class="col-md-4 offset-md-4 text-right border-top pt-2" >
-                        <div class="text-success" *ngIf="isCorrect()">
-                            Correct
-                        </div>
-                        <div class="text-danger" *ngIf="isCorrect() === false">
-                            Incorrect
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 offset-md-4">
-                        {{isCorrect()}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 offset-md-4">
-                        {{getNumDigs(guess)}} <br/>
-                        {{getNumDigs(num1* num2)}}
-
-                    </div>
-                </div>
+           
+               
 
             </div>
         </div>
@@ -114,12 +93,15 @@
                 </div>
                 <div class="row ">
                     
-                    <div class="col-md-4 offset-md-4 text-right border-top pt-2" >
-                        <div class="text-success" *ngIf="isCorrect()">
-                            Correct
+                    <div class="col-md-4 offset-md-4 text-right border-top pt-2"  >
+                        <div class="text-success" *ngIf="isCorrect() ">
+                            Correct <div *ngIf="getNext()"></div>
                         </div>
                         <div class="text-danger" *ngIf="isCorrect() === false">
-                            Incorrect {{num1*num2}} {{num1}} {{num2}} {{guess}}
+                            Incorrect 
+                        </div>
+                        <div class="" *ngIf="isCorrect() === undefined">
+                            &nbsp;
                         </div>
                     </div>
                 </div>

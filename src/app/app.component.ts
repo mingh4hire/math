@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
-@Component({
+import { timer } from 'rxjs';
+ @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -11,14 +11,26 @@ export class AppComponent {
   num2 = 44;
   num = 55;
   guess: number;
+  
+  constructor(){
+   }
+
+  random(digs:number):number{
+    return Math.floor(Math.random()*Math.pow(10,2));
+  }
+  getNext():void{
+    timer(1000).subscribe(x=>{
+      this.num1 = this.random(2);
+      this.num2 = this.random(2);
+      this.guess = null;
+    });
+  }
+
 
   isCorrect(): boolean {
     const prod = this.num1*this.num2;
-    if (this.getNumDigs(prod) == this.getNumDigs(this.guess)){
-      console.log('prod', prod);
-      console.log('guess', this.guess);
-      
-      if (prod ==this.guess){
+    if (this.getNumDigs(prod) === this.getNumDigs(this.guess)){ 
+      if (prod === +this.guess){
         return true;
       }
       return false;
